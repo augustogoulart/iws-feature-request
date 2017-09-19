@@ -1,5 +1,56 @@
-/*
+html {
+  position: relative;
+  min-height: 100%;
+}
+body {
+  /* Margin bottom by footer height */
+  margin-bottom: 80px;
+  padding-bottom: 80px;
+}
 
- Feature Request App main style
+.nav {
+    padding-top: 50px;
+    background-color: #f6f6f6;
+    font-size: 1.15rem;
+}
 
-*/
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.tab-content {
+    margin-top: 20px;
+}
+
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+  background-color: #d4d4d4;
+}
+
+
+.scroll{
+  overflow-y: auto
+}
+
+.nav-tabs .nav-link.active {
+    border-top-color: rgb(235, 12, 15);
+    border-top-width: 3px;
+
+}
+
+.card{
+    margin-top: 20px;
+}
+
