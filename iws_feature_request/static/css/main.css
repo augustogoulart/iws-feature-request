@@ -1,16 +1,17 @@
 html {
-  position: relative;
-  min-height: 100%;
-}
-body {
-  /* Margin bottom by footer height */
-  margin-bottom: 80px;
-  padding-bottom: 80px;
+    position: relative;
+    min-height: 100%;
 }
 
-.bg-inverse{
+body {
+    margin-bottom: 80px;
+    padding-bottom: 80px;
+}
+
+.bg-inverse {
     background-color: #1989a8 !important;
 }
+
 .nav {
     padding-top: 50px;
     background-color: #f6f6f6;
@@ -31,20 +32,17 @@ a:hover {
     margin-top: 20px;
 }
 
-
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 40px;
-  line-height: 40px; /* Vertically center the text there */
-  background-color: #d4d4d4;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 40px;
+    line-height: 40px;
+    background-color: #d4d4d4;
 }
 
-
-.scroll{
-  overflow-y: auto
+.scroll {
+    overflow-y: auto
 }
 
 .nav-tabs .nav-link.active {
@@ -53,30 +51,47 @@ a:hover {
 
 }
 
-.card{
+.card {
     margin-top: 20px;
 }
 
+.product-area {
+    font-size: 1rem;
+}
 
 /* Feature requests row */
-
-.request-row{
+.request-row {
     padding-top: 15px;
     border: 1px solid #bfbfbf;
     margin-left: 5px;
     margin-right: 5px;
 }
 
-.request-row:hover{
-    background-color:  #f6f6f6;
+.request-row:hover {
+    background-color: #f6f6f6;
 
 }
-.badge{
-    font-size: 0.8rem;
+
+.badge {
+    font-size: 1rem;
 }
 
+/************************/
+
+
+/* Feature requests form */
+form{
+    border: 1px solid #bfbfbf;
+    padding: 15px;
+
+}
+
+.btn-blue{
+    background-color: rgb(25, 117, 148);
+    color: white;
+}
 /*************************/
 
-.product-area{
-  font-size: 1rem;
-}
+
+
+
