@@ -14,39 +14,39 @@ start the api
 
 
 ### Running locally 
-1. Clone the repo:
+**1. Clone the repo:**
 ``` 
 git clone https://github.com/augustogoulart/iws-feature-request
 ```
-2. Access the project root:
+**2. Access the project root:**
 ```
 cd iws-feature-request
 ```
-3. Create a virtual enviroment: (python 3.5+)
+**3. Create a virtual enviroment: (python 3.5+)**
 ```
 python -m venv .venv
 ```
-4. Activate the virtual enviroment:
+**4. Activate the virtual enviroment:**
 ```
 source .venv/bin/activate
 ```
-5. Run the setup script:
+**5. Run the setup script:**
 ```
 make setup
 ```
-6. Install the test requirements:
+**6. Install the test requirements:**
 ```
 make setup-test
 ```
-6. Run the tests:
+**7. Run the tests:**
 ```
 make test
 ```
-7. Run the project:
+**8. Run the project:**
 ```
 make run
 ```
-8. See the project live at:
+**9. See the project live at:**
 ```
 http://localhost:5000/
 ```
