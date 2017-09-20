@@ -1,5 +1,11 @@
+setup:
+		pip install --upgrade -r requirements/requirements.txt
+        export FLASK_APP=iws_feature_request/app.py
+setup-test:
+	    pip install --upgrade -r requirements/test.txt
+
 test:
-	    python -m unittest
+	    py.test --cov iws_feature_request/tests
 
 run:
-	    python iws_feature_request/app.py
+	    flask run
