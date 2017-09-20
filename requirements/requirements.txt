@@ -18,3 +18,4 @@ marshmallow==2.13.6
 marshmallow-sqlalchemy==0.13.1
 flask-marshmallow==0.8.0
 Flask-Script==2.0.6
+python-decouple==3.1
