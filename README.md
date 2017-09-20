@@ -30,6 +30,10 @@ source .venv/bin/activate
 ```
 make setup
 ```
+6. Install the test requirements:
+```
+make setup-test
+```
 6. Run the tests:
 ```
 make test
@@ -37,6 +41,10 @@ make test
 7. Run the project:
 ```
 make run
+```
+8. See the project live at:
+```
+http://localhost:5000/
 ```
 
 ### This app is my solution to:
