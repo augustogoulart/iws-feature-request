@@ -6,9 +6,11 @@ function FeatureRequestViewModel() {
     self.client = ko.observable();
     self.target_date = ko.observable();
     self.priority = ko.observable();
+    self.product_area = ko.observable();
 
     self.requests = ko.observable();
     self.requestDetail = ko.observable();
+
 
     self.submitSuccess = ko.observable();
 
@@ -20,8 +22,6 @@ function FeatureRequestViewModel() {
     self.getRequestDetail = function (request) {
         self.requests(null);
         $.get('/api/requests/' + request.id, self.requestDetail)
-
-          
     };
 
     self.deleteRequest = function (message) {
@@ -32,7 +32,7 @@ function FeatureRequestViewModel() {
             success: function () {
                 self.getRequests();
             }
-        });          
+        });
 
     };
 
@@ -48,11 +48,18 @@ function FeatureRequestViewModel() {
                 client: self.client(),
                 description: self.description(),
                 target_date: self.target_date(),
-                priority: self.priority()
+                priority: self.priority(),
+                product_area: self.product_area()
             }),
             success: function () {
                 self.submitSuccess(true);
                 self.getRequests();
+                self.title(null);
+                self.client(null);
+                self.description(null);
+                self.target_date(null);
+                self.priority(null);
+                self.product_area();
             },
             error: function (jqXHR) {
                 console.log("POST error: " + jqXHR.status);

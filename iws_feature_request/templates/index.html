@@ -67,21 +67,19 @@
                                  data-bind="click: $root.getRequestDetail">
 
                                 <div class="col-md-8">
-                                    <h2 data-bind="text: client.name">
-                                        <small class="text-muted product-area">Billing</small>
-                                    </h2>
-                                    <p data-bind="text: title"></p>
+                                    <h2 data-bind="text: title"></h2>
+                                    <span class="text-muted product-area" data-bind="text:product_area">bill</span>
+                                    <p class="text-description" data-bind="text: client.name"></p>
                                 </div>
 
                                 <div class="col-md-2">
                                     <small class="text-muted"> Priority</small>
-
                                     <span class="badge badge-pill" data-bind="text: priority"></span>
                                 </div>
 
                                 <div class="col-md-2">
-                                    <p data-bind="text:target_date"></p>
-                                    <small class="text-muted product-area">Target date</small>
+                                    <span class="text-muted product-area">Target date</span>
+                                    <h5 data-bind="text:target_date"></h5>
                                 </div>
 
                             </div>
@@ -92,7 +90,7 @@
                                 <div class="row ">
                                     <div class="col-md-3">
                                         <h4 class="text-muted">Priority:</h4>
-                                        <p class="badge badge-pill badge-danger" data-bind="value: priority.value"></p>
+                                        <p class="badge badge-pill badge-danger" data-bind="text: priority"></p>
                                     </div>
                                     <div class="col-md-3">
                                         <h4 class="text-muted">Client:</h4>
@@ -100,7 +98,7 @@
                                     </div>
                                     <div class="col-md-3">
                                         <h4 class="text-muted">Product area:</h4>
-                                        <h4>Billing</h4>
+                                        <h4 data-bind="text:product_area"></h4>
                                     </div>
                                     <div class="col-md-3">
                                         <h4 class="text-muted">Target date:</h4>
@@ -115,7 +113,7 @@
                                 <div class="row">
 
                                     <div class="col-md-8">
-                                        <p data-bind="text:description"></p>
+                                        <p class="text-description" data-bind="text:description"></p>
                                     </div>
 
                                 </div>
@@ -190,7 +188,7 @@
 
                             <div class="form-group">
 
-                                <select class="form-control" id="producArea">
+                                <select class="form-control" id="producArea" data-bind="value: product_area">
                                     <option disabled selected hidden>Product area</option>
                                     <option>Polices</option>
                                     <option>Billing</option>
@@ -219,9 +217,7 @@
                                     <input class="form-control" type="date" value="2011-08-19"
                                            id="target-date" data-bind="value: target_date">
                                 </div>
-
                             </div>
-
 
                         </form>
                         <!-- ./Feature request submission form-->
