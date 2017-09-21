@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request, jsonify, make_response
 from flask_restful import Api, Resource
 from sqlalchemy.exc import SQLAlchemyError
 
@@ -17,6 +17,17 @@ class FeatureRequestResource(Resource):
     def get(self, id):
         feature_request = FeatureRequest.query.get_or_404(id)
         return feature_request_schema.dump(feature_request).data
+
+    def delete(self, id):
+        feature_request = FeatureRequest.query.get_or_404(id)
+        try:
+            feature_request.delete(feature_request)
+            return '', 204
+
+        except SQLAlchemyError as e:
+            db.session.rollback()
+            resp = str(e)
+            return resp, 401
 
 
 class FeatureRequestResourceList(Resource):
