@@ -15,7 +15,6 @@ function FeatureRequestViewModel() {
         self.requests(null);
         $.get('/api/requests/' + request.id, self.requestDetail)
 
-        
           
     };
 
@@ -46,8 +45,8 @@ function FeatureRequestViewModel() {
                 target_date: '2017-10-10'
             }),
             success: function () {
-                self.submitSuccess(true)
-
+                self.submitSuccess(true);
+                self.getRequests();
             },
             error: function (jqXHR) {
                 console.log("POST error: " + jqXHR.status);
