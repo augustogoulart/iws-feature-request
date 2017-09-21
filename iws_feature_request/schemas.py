@@ -7,7 +7,6 @@ class ClientSchema(ma.Schema):
     id = fields.Integer(dump_only=True)
     name = fields.String(required=True, validate=validate.Length(1))
     url = ma.URLFor('api.clientresource', id='<id>', _external=True)
-
     requests = fields.Nested('FeatureRequestSchema', many=True, exclude=('client',))
 
 

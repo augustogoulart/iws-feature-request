@@ -79,7 +79,6 @@ class ClientResource(Resource):
 
 
 class ClientListResource(Resource):
-
     def get(self):
         client = Client.query.all()
         return client_schema.dump(client, many=True).data
@@ -99,10 +98,15 @@ class ClientListResource(Resource):
             client.add(client)
             query = Client.query.get(client.id)
             return client_schema.dump(query).data, 201
-
         except SQLAlchemyError as error:
             db.session.rollback()
             return str(error), 400
+
+
+class FeaturesByClientesResource(Resource):
+    def get(self, id):
+        query = FeatureRequest.query.filter_by(client_id=id)
+        return feature_request_schema.dump(query, many=True).data
 
 
 api.add_resource(FeatureRequestResourceList, '/requests/')
@@ -111,3 +115,4 @@ api.add_resource(FeatureRequestResource, '/requests/<int:id>')
 api.add_resource(ClientListResource, '/clients/')
 api.add_resource(ClientResource, '/clients/<int:id>')
 
+api.add_resource(FeaturesByClientesResource, '/clients/<int:id>/requests')
