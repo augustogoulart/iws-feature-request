@@ -30,7 +30,6 @@ function FeatureRequestViewModel() {
 
     };
 
-
     self.postRequest = function () {
         $.ajax({
             url: '/api/requests/',
