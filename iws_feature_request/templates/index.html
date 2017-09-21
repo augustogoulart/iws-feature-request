@@ -170,19 +170,18 @@
                         <form>
                             <div class="form-group">
                                 <input type="text" class="form-control" id="featureRequestTitle"
-                                       placeholder="Title">
-
+                                       placeholder="Title" data-bind="value: title">
                             </div>
 
                             <div class="form-group">
                                 <textarea class="form-control" id="featureDescription" rows="3"
-                                          placeholder="Description"></textarea>
+                                          placeholder="Description" data-bind="value: description"></textarea>
                             </div>
 
 
                             <div class="form-group">
 
-                                <select class="form-control" id="exampleSelect1">
+                                <select class="form-control" id="exampleSelect1" data-bind="value: client">
                                     <option disabled selected hidden>Client</option>
                                     <option>Client A</option>
                                     <option>Client B</option>
@@ -218,10 +217,10 @@
 
                             <div class="form-group row">
 
-                                <label for="example-date-input" class="col-2 col-form-label">Target date</label>
+                                <label for="target-date" class="col-2 col-form-label">Target date</label>
                                 <div class="col-10">
                                     <input class="form-control" type="date" value="2011-08-19"
-                                           id="example-date-input">
+                                           id="target-date" data-bind="value: target_date">
                                 </div>
 
                             </div>

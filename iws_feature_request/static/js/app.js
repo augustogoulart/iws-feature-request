@@ -1,6 +1,12 @@
 function FeatureRequestViewModel() {
     var self = this;
 
+    self.title = ko.observable();
+    self.description = ko.observable();
+    self.client = ko.observable();
+    self.target_date = ko.observable();
+
+
     self.requests = ko.observable();
     self.requestDetail = ko.observable();
 
@@ -38,10 +44,10 @@ function FeatureRequestViewModel() {
             accepts: "application/json",
             dataType: 'json',
             data: JSON.stringify({
-                title: 'Add more buttons to the dashboard',
-                client: 'Britecore',
-                description: 'At this point we have very few buttons. People love buttons, lets add more',
-                target_date: '2017-10-10'
+                title: self.title(),
+                client: self.client(),
+                description: self.description(),
+                target_date: self.target_date()
             }),
             success: function () {
                 self.submitSuccess(true);
