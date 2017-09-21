@@ -14,6 +14,9 @@ function FeatureRequestViewModel() {
     self.getRequestDetail = function (request) {
         self.requests(null);
         $.get('/api/requests/' + request.id, self.requestDetail)
+
+        
+          
     };
 
     self.deleteRequest = function (message) {
@@ -24,7 +27,7 @@ function FeatureRequestViewModel() {
             success: function () {
                 self.getRequests();
             }
-        });
+        });          
 
     };
 
