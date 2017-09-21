@@ -1,6 +1,19 @@
-/*
+function FeatureRequestViewModel() {
+    var self = this;
 
- Feature Request App
+    self.requests = ko.observable();
+    self.requestDetail = ko.observable();
 
- */
+    self.getRequests = (function(){
+        self.requestDetail(null);
+        $.get('/api/requests/', self.requests );
+    }());
 
+    self.getRequestDetail = function (request) {
+        self.requests(null);
+        $.get('/api/requests/'+request.id, self.requestDetail)
+    }
+
+}
+
+ko.applyBindings(new FeatureRequestViewModel());
