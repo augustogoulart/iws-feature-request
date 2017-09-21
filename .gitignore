@@ -4,3 +4,7 @@ __pycache__
 *.pem
 .venv
 .cache
+<<<<<<< HEAD
+=======
+.env
+>>>>>>> f1e885aa8d351160046fab53a3c7ebbbcfcd0f60

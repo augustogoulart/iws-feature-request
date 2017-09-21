@@ -1,12 +1,12 @@
-from flask import Flask, render_template
+from flask import Flask
+from models import db
+from views import api_bp
 
-app = Flask(__name__)
 
+def create_app(config_filename):
+    app = Flask(__name__)
+    app.config.from_object(config_filename)
 
-@app.route('/')
-def home():
-    return render_template('index.html')
-
-if __name__ == "__main__":
-    app.run(debug=True)
-
+    db.init_app(app)
+    app.register_blueprint(api_bp, url_prefix='/api')
+    return app
