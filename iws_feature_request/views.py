@@ -58,6 +58,7 @@ class FeatureRequestResourceList(Resource):
                 title=request_dict['title'],
                 description=request_dict['description'],
                 target_date=request_dict['target_date'],
+                priority=request_dict['priority'],
                 client=client
             )
             feature_request.add(feature_request)

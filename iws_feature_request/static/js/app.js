@@ -5,7 +5,7 @@ function FeatureRequestViewModel() {
     self.description = ko.observable();
     self.client = ko.observable();
     self.target_date = ko.observable();
-
+    self.priority = ko.observable();
 
     self.requests = ko.observable();
     self.requestDetail = ko.observable();
@@ -47,7 +47,8 @@ function FeatureRequestViewModel() {
                 title: self.title(),
                 client: self.client(),
                 description: self.description(),
-                target_date: self.target_date()
+                target_date: self.target_date(),
+                priority: self.priority()
             }),
             success: function () {
                 self.submitSuccess(true);

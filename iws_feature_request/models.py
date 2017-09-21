@@ -23,15 +23,17 @@ class FeatureRequest(db.Model, Manager):
     title = db.Column(db.String(250), nullable=False)
     description = db.Column(db.Text, nullable=False)
     target_date = db.Column(db.String, nullable=False)
+    priority = db.Column(db.Integer, nullable=False, default=0)
     client_id = db.Column(db.Integer, db.ForeignKey('client.id', ondelete='CASCADE'),
                           nullable=False, server_default='0')
     client = db.relationship('Client')
 
-    def __init__(self, title, description, target_date, client):
+    def __init__(self, title, description, target_date, client, priority):
         self.title = title
         self.description = description
         self.target_date = target_date
         self.client = client
+        self.priority = priority
 
 
 class Client(db.Model, Manager):

@@ -16,6 +16,7 @@ class FeatureRequestSchema(ma.Schema):
     title = fields.String(required=True)
     description = fields.String(required=True)
     target_date = fields.String(required=True)
+    priority = fields.Integer(required=True)
     client = fields.Nested(ClientSchema, only=['id', 'name'], required=True)
 
     @pre_load

@@ -22,7 +22,6 @@
     <!-- ./IWS Feature Request css -->
 
 </head>
-
 <body>
 
 <!-- Navbar -->
@@ -75,11 +74,9 @@
                                 </div>
 
                                 <div class="col-md-2">
-                                    <small class="text-muted">Priority</small>
+                                    <small class="text-muted"> Priority</small>
 
-                                    <span class="badge badge-pill">1
-
-                                    </span>
+                                    <span class="badge badge-pill" data-bind="text: priority"></span>
                                 </div>
 
                                 <div class="col-md-2">
@@ -95,7 +92,7 @@
                                 <div class="row ">
                                     <div class="col-md-3">
                                         <h4 class="text-muted">Priority:</h4>
-                                        <p class="badge badge-pill badge-danger">1</p>
+                                        <p class="badge badge-pill badge-danger" data-bind="value: priority.value"></p>
                                     </div>
                                     <div class="col-md-3">
                                         <h4 class="text-muted">Client:</h4>
@@ -203,8 +200,7 @@
                             </div>
 
                             <div class="form-group">
-
-                                <select class="form-control" id="Priority">
+                                <select class="form-control" id="Priority" data-bind="value: priority">
                                     <option disabled selected hidden>Priority</option>
                                     <option>1</option>
                                     <option>2</option>
