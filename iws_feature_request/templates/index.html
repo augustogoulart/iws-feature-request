@@ -64,7 +64,8 @@
                         <div data-bind="foreach: requests">
 
                             <!-- Feature requests row -->
-                            <div class="row justify-content-center request-row" data-bind="click: $root.getRequestDetail">
+                            <div class="row justify-content-center request-row"
+                                 data-bind="click: $root.getRequestDetail">
 
                                 <div class="col-md-8">
                                     <h2 data-bind="text: client.name">
@@ -74,20 +75,60 @@
                                 </div>
 
                                 <div class="col-md-2">
-                                    <span class="badge badge-pill badge-danger">1</span>
+                                    <small class="text-muted">Priority</small>
+
+                                    <span class="badge badge-pill">1
+
+                                    </span>
                                 </div>
 
                                 <div class="col-md-2">
-                                    <p class="text-muted" data-bind="text:target_date"></p>
+                                    <p data-bind="text:target_date"></p>
+                                    <small class="text-muted product-area">Target date</small>
                                 </div>
 
                             </div>
                         </div>
 
                         <div data-bind="with: requestDetail">
-                            <h1 data-bind="text: title"></h1>
-                            <p data-bind="text: client.name"></p>
-                            <p data-bind="text: target_date"></p>
+                            <div class="request-detail">
+                                <div class="row ">
+                                    <div class="col-md-3">
+                                        <h4 class="text-muted">Priority:</h4>
+                                        <p class="badge badge-pill badge-danger">1</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h4 class="text-muted">Client</h4>
+                                        <h2 data-bind="text:client.name"></h2>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h4 class="text-muted">Product area:</h4>
+                                        <p >Billing</p>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h4 class="text-muted">Target date:</h4>
+                                        <p data-bind="text:target_date"></p>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <h1 data-bind="text: title"></h1>
+                                    </div>
+                                </div>
+                                <div class="row">
+
+                                    <div class="col-md-8">
+                                        <p data-bind="text:description"></p>
+                                    </div>
+
+                                </div>
+                                <div class="row justify-content-end">
+                                    <div class="col-md-4">
+                                        <button class="btn btn-danger">Delete</button>
+                                        <button class="btn btn-primary">Update</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
