@@ -12,7 +12,19 @@ function FeatureRequestViewModel() {
     self.getRequestDetail = function (request) {
         self.requests(null);
         $.get('/api/requests/'+request.id, self.requestDetail)
-    }
+    };
+
+    self.deleteRequest = function (message) {
+        $.ajax({
+            url:'/api/requests/'+message.id,
+            type: 'DELETE',
+            data: {message:message},
+            success: function() {
+                self.getRequests();
+             }
+        })
+
+    };
 
     self.getRequests();
 }

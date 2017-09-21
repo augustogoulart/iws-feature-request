@@ -99,11 +99,11 @@
                                     </div>
                                     <div class="col-md-3">
                                         <h4 class="text-muted">Client:</h4>
-                                        <h2 data-bind="text:client.name"></h2>
+                                        <h4 data-bind="text:client.name"></h4>
                                     </div>
                                     <div class="col-md-3">
                                         <h4 class="text-muted">Product area:</h4>
-                                        <h2>Billing</h2>
+                                        <h4>Billing</h4>
                                     </div>
                                     <div class="col-md-3">
                                         <h4 class="text-muted">Target date:</h4>
@@ -127,11 +127,13 @@
                                         <div class="btn-toolbar justify-content-between" role="toolbar"
                                              aria-label="Toolbar with button groups">
                                             <div class="btn-group" role="group" aria-label="First group">
-                                                <button class="btn btn-danger">Delete</button>
+                                                <button class="btn btn-danger" data-bind="click: $root.deleteRequest">
+                                                    Delete
+                                                </button>
 
                                             </div>
                                             <div class="input-group">
-                                                 <button class="btn btn-primary">Update</button>
+                                                <button class="btn btn-primary">Update</button>
                                                 <button class="btn btn-success" data-bind="click:$root.getRequests">
                                                     Back
                                                 </button>

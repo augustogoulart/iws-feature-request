@@ -5,8 +5,17 @@
 ### This is not the first release yet!
 Up to this moment, the app is running on an AWS EC2 instance at:
 
-http://ec2-54-191-66-93.us-west-2.compute.amazonaws.com:5000
+http://ec2-54-245-49-5.us-west-2.compute.amazonaws.com:5000/
 
+At this point we have a Flask application serving a static page that contains the app layout.
+
+### TODO
+start the api
+
+
+### Running locally 
+1. Clone the repo:
+=======
 At this point we have a Flask application serving a static page that contains the app layout and The API is starting taking shape.
 for better visualization, I'd recommend this Chrome extension: [JSON Viewer](https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh?utm_source=chrome-app-launcher-info-dialog
 )

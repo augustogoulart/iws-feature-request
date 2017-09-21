@@ -14,7 +14,7 @@ class Manager:
         return db.session.commit()
 
     def delete(self, resource):
-        db.session.remove(resource)
+        db.session.delete(resource)
         return db.session.commit()
 
 
