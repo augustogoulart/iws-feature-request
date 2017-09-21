@@ -1,6 +1,6 @@
 import os
-from decouple import config
 
+from decouple import config
 
 BASEDIR = os.path.abspath(os.path.dirname(__file__))
 
@@ -20,5 +20,3 @@ SQLALCHEMY_DATABASE_URI = "postgresql://{DB_USER}:{DB_PASS}@{DB_PORT}/{DB_NAME}"
                                                                                         DB_NAME=config('DB_NAME'))
 
 SQLALCHEMY_MIGRATE_REPO = os.path.join(BASEDIR, 'db_repository')
-
-

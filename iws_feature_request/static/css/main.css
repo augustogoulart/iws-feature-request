@@ -78,18 +78,18 @@ a:hover {
 
 /************************/
 
-
 /* Feature requests form */
-form{
+form {
     border: 1px solid #bfbfbf;
     padding: 15px;
 
 }
 
-.btn-blue{
+.btn-blue {
     background-color: rgb(25, 117, 148);
     color: white;
 }
+
 /*************************/
 
 
