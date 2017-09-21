@@ -7,10 +7,38 @@ Up to this moment, the app is running on an AWS EC2 instance at:
 
 http://ec2-54-191-66-93.us-west-2.compute.amazonaws.com:5000
 
-At this point we have a Flask application serving a static page that contains the app layout.
+At this point we have a Flask application serving a static page that contains the app layout and The API is starting taking shape.
+for better visualization, I'd recommend this Chrome extension: [JSON Viewer](https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh?utm_source=chrome-app-launcher-info-dialog
+)
 
-### TODO
-start the api
+**Feature requests list:**
+
+**_GET_** :5000/api/requests/
+
+**Feature request detail:**
+
+**_GET_** :5000/api/requests/1
+
+**Adding a feature:**
+
+**_POST_** :5000/api/requests/ title='title',client='client', description='description', target_date='yyy-mm-dd'
+
+Obs: If a client does not exits, it will be automatically created.
+
+**Clients list:**
+
+**_GET_** :5000/api/clients/
+
+**Client detail:**
+
+**_GET_** :5000/api/clients/1
+
+**Client post:**
+
+_**POST**_ :5000/api/clients/ name='name'
+
+## TODO
+Front end integration
 
 
 ### Running locally 
