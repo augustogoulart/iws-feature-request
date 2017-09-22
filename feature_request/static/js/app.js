@@ -41,7 +41,7 @@ function FeatureRequestViewModel() {
 
     };
     self.patchRequest = function (request) {
-        console.log('VAL:'+request.title);
+        console.log('VAL:' + request.title);
         $.ajax({
             url: '/api/requests/' + request.id,
             type: 'PATCH',
@@ -66,8 +66,6 @@ function FeatureRequestViewModel() {
                 console.log("POST error: " + jqXHR.status);
             }
         });
-
-
 
 
     };
@@ -106,18 +104,20 @@ function FeatureRequestViewModel() {
     };
 
     self.validate = function () {
-        if(!self.title() || self.client() ==="Client" || !self.description()
-            || !self.target_date() || self.priority() === "Priority" || self.priority() === 'Product area')
-        {
+        if (!self.title() || self.client() === "Client" || !self.description()
+            || !self.target_date() || self.priority() === "Priority" || self.priority() === 'Product area') {
             self.formInvalid(true);
-        }else{
+        } else {
             self.postRequest();
         }
     };
 
-    self.getRequests();
-    self.submitSuccess(false);
-    self.formInvalid(false);
+    self.startUp = function () {
+        self.getRequests();
+        self.submitSuccess(false);
+        self.formInvalid(false)
+
+    }
 }
 
 ko.applyBindings(new FeatureRequestViewModel());
