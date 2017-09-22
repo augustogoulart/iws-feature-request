@@ -8,9 +8,9 @@ function FeatureRequestViewModel() {
     self.priority = ko.observable();
     self.product_area = ko.observable();
 
+
     self.requests = ko.observable();
     self.requestDetail = ko.observable();
-
 
     self.submitSuccess = ko.observable();
 
@@ -35,7 +35,38 @@ function FeatureRequestViewModel() {
         });
 
     };
+    self.patchRequest = function (request) {
+        console.log('VAL:'+request.title);
+        $.ajax({
+            url: '/api/requests/' + request.id,
+            type: 'PATCH',
+            contentType: "application/json",
+            accepts: "application/json",
+            dataType: 'json',
+            data: JSON.stringify({
+                title: request.title,
+                client: request.client,
+                description: request.description,
+                target_date: request.target_date,
+                priority: request.priority,
+                product_area: request.product_area
+            }),
+            success: function (request) {
+                $('#myModal').modal('hide');
+                $('.modal-backdrop').remove();
+                self.getRequestDetail(request)
+            },
 
+            error: function (jqXHR) {
+                console.log("POST error: " + jqXHR.status);
+            }
+        });
+
+
+
+
+    };
+    self.getRequests();
     self.postRequest = function () {
         $.ajax({
             url: '/api/requests/',
@@ -54,12 +85,6 @@ function FeatureRequestViewModel() {
             success: function () {
                 self.submitSuccess(true);
                 self.getRequests();
-                self.title(null);
-                self.client(null);
-                self.description(null);
-                self.target_date(null);
-                self.priority(null);
-                self.product_area();
             },
             error: function (jqXHR) {
                 console.log("POST error: " + jqXHR.status);
@@ -67,6 +92,7 @@ function FeatureRequestViewModel() {
         });
 
     };
+
     self.getRequests();
 }
 
