@@ -27,7 +27,7 @@
 <!-- Navbar -->
 
 <nav class="navbar navbar-inverse bg-inverse">
-    <a class="navbar-brand" href="#">IWS Feature Request</a>
+    <h4 class="text-white" >IWS Feature Request</h4>
 </nav>
 <!-- /.Navbar-->
 
@@ -37,7 +37,7 @@
 
     <!-- Nav tabs -->
 
-    <ul class="nav nav-tabs nav-justified" role="tablist">
+    <ul class="nav nav-tabs nav-justified" role="tablist" data-bind="click: setFalse">
         <li class="nav-item">
             <a class="nav-link active " data-toggle="tab" href="#requests" role="tab">
                 <i class="fa fa-download" aria-hidden="true"></i> Requests</a>
@@ -231,10 +231,10 @@
 
                         <div data-bind="visible: submitSuccess" class="alert alert-success alert-dismissible fade show"
                              role="alert">
-                            <button type="button" class="close" data-bind="click: submitSuccess(false)">
+                            <button type="button" class="close" data-bind="click: setFalse">
                                 <span aria-hidden="true">&times;</span>
                             </button>
-                            <strong>Holy guacamole!</strong> You should check in on some of those fields below.
+                            <strong>Success!</strong> Feature request added.
                         </div>
 
                         <form>

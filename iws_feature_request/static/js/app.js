@@ -14,6 +14,10 @@ function FeatureRequestViewModel() {
 
     self.submitSuccess = ko.observable();
 
+    self.setFalse = function () {
+        self.submitSuccess(false);
+    };
+
     self.getRequests = function () {
         self.requestDetail(null);
         $.get('/api/requests/', self.requests);
@@ -85,6 +89,12 @@ function FeatureRequestViewModel() {
             success: function () {
                 self.submitSuccess(true);
                 self.getRequests();
+                self.title(null);
+                self.client('Client');
+                self.description(null);
+                self.target_date(null);
+                self.priority('Priority');
+                self.product_area('Product area');
             },
             error: function (jqXHR) {
                 console.log("POST error: " + jqXHR.status);
