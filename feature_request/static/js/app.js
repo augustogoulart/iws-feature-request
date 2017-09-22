@@ -116,6 +116,8 @@ function FeatureRequestViewModel() {
     };
 
     self.getRequests();
+    self.submitSuccess(false);
+    self.formInvalid(false);
 }
 
 ko.applyBindings(new FeatureRequestViewModel());
