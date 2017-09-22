@@ -37,7 +37,7 @@
 
     <!-- Nav tabs -->
 
-    <ul class="nav nav-tabs nav-justified" role="tablist" >
+    <ul class="nav nav-tabs nav-justified" role="tablist" data-bind="click: $root.hideAlerts">
         <li class="nav-item">
             <a class="nav-link active " data-toggle="tab" href="#requests" role="tab">
                 <i class="fa fa-list" aria-hidden="true"></i> Requests</a>
@@ -344,7 +344,6 @@
 <script>
     $("#alert-form-error").hide();
     $("#alert-form-success").hide();
-
 </script>
 <script src="{{ url_for('static', filename='js/vendor/knockout.js') }}" type="text/javascript"></script>
 <!-- ./JavaScript dependencies -->

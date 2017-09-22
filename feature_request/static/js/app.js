@@ -12,6 +12,10 @@ function FeatureRequestViewModel() {
     self.requests = ko.observable();
     self.requestDetail = ko.observable();
 
+    self.hideAlerts = function () {
+        $("#alert-form-error").hide();
+        $("#alert-form-success").hide();
+    };
 
     self.getRequests = function () {
         self.requestDetail(null);
@@ -101,7 +105,6 @@ function FeatureRequestViewModel() {
         } else {
             $("#alert-form-error").hide();
             $("#alert-form-success").show();
-
             self.postRequest();
         }
     };
