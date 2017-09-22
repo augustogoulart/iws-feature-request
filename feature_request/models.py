@@ -44,3 +44,4 @@ class Client(db.Model, Manager):
 
     def __init__(self, name):
         self.name = name
+

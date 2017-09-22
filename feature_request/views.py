@@ -67,7 +67,7 @@ class FeatureRequestResource(Resource):
 
 class FeatureRequestResourceList(Resource):
     def get(self):
-        query = FeatureRequest.query.all()
+        query = FeatureRequest.query.order_by(FeatureRequest.priority)
         return feature_request_schema.dump(query, many=True).data
 
     def post(self):
@@ -120,47 +120,6 @@ class FeatureRequestResourceList(Resource):
             return str(error), 400
 
 
-class ClientResource(Resource):
-    def get(self, id):
-        client = Client.query.get_or_404(id)
-        return client_schema.dump(client).data
-
-
-class ClientListResource(Resource):
-    def get(self):
-        client = Client.query.all()
-        return client_schema.dump(client, many=True).data
-
-    def post(self):
-        context = request.get_json()
-        if not context:
-            return {'message': 'No input data provided'}, 400
-
-        errors = client_schema.validate(context)
-
-        if errors:
-            return errors, 400
-
-        try:
-            client = Client(context['name'])
-            client.add(client)
-            query = Client.query.get(client.id)
-            return client_schema.dump(query).data, 201
-        except SQLAlchemyError as error:
-            db.session.rollback()
-            return str(error), 400
-
-
-class FeaturesByClientesResource(Resource):
-    def get(self, id):
-        query = FeatureRequest.query.filter_by(client_id=id)
-        return feature_request_schema.dump(query, many=True).data
-
-
 api.add_resource(FeatureRequestResourceList, '/requests/')
 api.add_resource(FeatureRequestResource, '/requests/<int:id>')
 
-api.add_resource(ClientListResource, '/clients/')
-api.add_resource(ClientResource, '/clients/<int:id>')
-
-api.add_resource(FeaturesByClientesResource, '/clients/<int:id>/requests')

@@ -17,6 +17,7 @@ function FeatureRequestViewModel() {
         $("#alert-form-success").hide();
     };
 
+
     self.getRequests = function () {
         self.requestDetail(null);
         $.get('/api/requests/', self.requests);
