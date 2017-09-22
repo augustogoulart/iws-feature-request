@@ -69,7 +69,7 @@ function FeatureRequestViewModel() {
 
 
     };
-    self.getRequests();
+
     self.postRequest = function () {
         $.ajax({
             url: '/api/requests/',
@@ -113,11 +113,12 @@ function FeatureRequestViewModel() {
     };
 
     self.startUp = function () {
-        self.getRequests();
         self.submitSuccess(false);
-        self.formInvalid(false)
+        self.formInvalid(false);
+        self.getRequests();
+    };
 
-    }
+    self.startUp();
 }
 
 ko.applyBindings(new FeatureRequestViewModel());
