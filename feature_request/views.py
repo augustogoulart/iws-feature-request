@@ -1,4 +1,4 @@
-from flask import Blueprint, request, jsonify
+from flask import Blueprint, request
 from flask_restful import Api, Resource
 from models import db, FeatureRequest, Client
 from schemas import FeatureRequestSchema, ClientSchema
@@ -58,7 +58,6 @@ class FeatureRequestResource(Resource):
             feature_request.target_date = feature_request_dict.get('target_date')
             feature_request.update()
 
-
             return self.get(id)
 
         except SQLAlchemyError as error:
@@ -98,6 +97,18 @@ class FeatureRequestResourceList(Resource):
                 product_area=request_dict['product_area'],
                 client=client
             )
+
+            # Check priority before persist
+
+            requests_by_client = FeatureRequest.query.filter_by(client_id=client.id)
+            data = feature_request_schema.dump(requests_by_client, many=True).data
+
+            for f_request in data:
+                if f_request.get('priority') >= int(feature_request.priority):
+                    f_query = FeatureRequest.query.get_or_404(f_request.get('id'))
+                    f_query.priority += 1
+                    f_query.update()
+
             feature_request.add(feature_request)
 
             query = FeatureRequest.query.get(feature_request.id)
