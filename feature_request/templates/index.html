@@ -27,7 +27,7 @@
 <!-- Navbar -->
 
 <nav class="navbar navbar-inverse bg-inverse">
-    <h4 class="text-white" >IWS Feature Request</h4>
+    <h4 class="text-white">IWS Feature Request</h4>
 </nav>
 <!-- /.Navbar-->
 
@@ -152,7 +152,8 @@
                                         </div>
 
                                         <div class="form-group">
-                                <textarea class="form-control" rows="8" data-bind="value: description"></textarea>
+                                            <textarea class="form-control" rows="8"
+                                                      data-bind="value: description"></textarea>
                                         </div>
 
 
@@ -229,6 +230,16 @@
                     <div class="col-md-10">
                         <!-- Feature request submission form -->
 
+                        <!--form error -->
+                         <div data-bind="visible: formInvalid" class="alert alert-danger alert-dismissible fade show"
+                             role="alert">
+                            <button type="button" class="close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <strong>Field required!</strong> Some fields are empty.
+                        </div>
+                        <!--./form error -->
+
                         <div data-bind="visible: submitSuccess" class="alert alert-success alert-dismissible fade show"
                              role="alert">
                             <button type="button" class="close" data-bind="click: setFalse">
@@ -238,19 +249,20 @@
                         </div>
 
                         <form>
-                            <div class="form-group">
-                                <input type="text" class="form-control" placeholder="Title" data-bind="value: title">
+                            <div class="form-group ">
+                                <input type="text" class="form-control" placeholder="Title"
+                                       data-bind="value: title">
                             </div>
 
                             <div class="form-group">
                                 <textarea class="form-control" rows="8"
-                                          placeholder="Description" data-bind="value: description"></textarea>
+                                          placeholder="Description" data-bind="value: description" required></textarea>
                             </div>
 
 
                             <div class="form-group">
 
-                                <select class="form-control" data-bind="value: client">
+                                <select class="form-control" data-bind="value: client" required>
                                     <option disabled selected hidden>Client</option>
                                     <option>Client A</option>
                                     <option>Client B</option>
@@ -261,7 +273,7 @@
 
                             <div class="form-group">
 
-                                <select class="form-control" data-bind="value: product_area">
+                                <select class="form-control" data-bind="value: product_area" required>
                                     <option disabled selected hidden>Product area</option>
                                     <option>Polices</option>
                                     <option>Billing</option>
@@ -272,7 +284,7 @@
                             </div>
 
                             <div class="form-group">
-                                <select class="form-control" data-bind="value: priority">
+                                <select class="form-control" data-bind="value: priority" required>
                                     <option disabled selected hidden>Priority</option>
                                     <option>1</option>
                                     <option>2</option>
@@ -288,21 +300,26 @@
                                 <label for="target-date" class="col-2 col-form-label">Target date</label>
                                 <div class="col-10">
                                     <input class="form-control" type="date" value="2011-08-19"
-                                           data-bind="value: target_date">
+                                           data-bind="value: target_date" required>
                                 </div>
                             </div>
 
+
+                            <button type="submit" class="btn btn-primary btn-lg btn-block"
+                                    data-bind="click: $root.validate">Open request
+                            </button>
                         </form>
                         <!-- ./Feature request submission form-->
-                        <button class="btn btn-blue" data-bind="click: $root.postRequest">Open request</button>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- /.New Feature Request Form -->
-
     </div>
-    <!-- ./Tab panels -->
+</div>
+<!-- /.New Feature Request Form -->
+
+</div>
+<!-- ./Tab panels -->
 
 </div>
 <!-- /.Main -->

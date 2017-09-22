@@ -13,6 +13,7 @@ function FeatureRequestViewModel() {
     self.requestDetail = ko.observable();
 
     self.submitSuccess = ko.observable();
+    self.formInvalid = ko.observable();
 
     self.setFalse = function () {
         self.submitSuccess(false);
@@ -88,6 +89,7 @@ function FeatureRequestViewModel() {
             }),
             success: function () {
                 self.submitSuccess(true);
+                self.formInvalid(false);
                 self.getRequests();
                 self.title(null);
                 self.client('Client');
@@ -103,7 +105,44 @@ function FeatureRequestViewModel() {
 
     };
 
+    self.validate = function () {
+        if(!self.title() || self.client() ==="Client" || !self.description()
+            || !self.target_date() || self.priority() === "Priority" || self.priority() === 'Product area')
+        {
+            self.formInvalid(true);
+        }else{
+            self.postRequest();
+        }
+    };
+
     self.getRequests();
 }
 
 ko.applyBindings(new FeatureRequestViewModel());
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
