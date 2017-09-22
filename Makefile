@@ -11,4 +11,4 @@ run:
 	    cd feature_request && python wsgi.py
 
 gunicorn:
-	    cd feature_request && gunicorn --bind 0.0.0.0:5000 --workers=3 wsgi:app
+	    cd feature_request && gunicorn --bind 0.0.0.0:80 --workers=3 wsgi:app
