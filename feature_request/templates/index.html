@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/html">
 
 <head>
 
@@ -10,6 +10,7 @@
     <title>IWS Feature Request</title>
 
     <!-- css dependencies -->
+
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css"
           integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
@@ -23,301 +24,316 @@
 
 </head>
 <body>
+<div id="loader" >
+<div class="sk-cube-grid">
+  <div class="sk-cube sk-cube1"></div>
+  <div class="sk-cube sk-cube2"></div>
+  <div class="sk-cube sk-cube3"></div>
+  <div class="sk-cube sk-cube4"></div>
+  <div class="sk-cube sk-cube5"></div>
+  <div class="sk-cube sk-cube6"></div>
+  <div class="sk-cube sk-cube7"></div>
+  <div class="sk-cube sk-cube8"></div>
+  <div class="sk-cube sk-cube9"></div>
+</div>
+</div>
+<div id="content">
 
-<!-- Navbar -->
+    <!-- Navbar -->
 
-<nav class="navbar navbar-inverse bg-inverse">
-    <h4 class="text-white">IWS Feature Request</h4>
-</nav>
-<!-- /.Navbar-->
+    <nav class="navbar navbar-inverse bg-inverse">
+        <h4 class="text-white">IWS Feature Request</h4>
+    </nav>
+    <!-- /.Navbar-->
 
-<!-- Main -->
+    <!-- Main -->
 
-<div id="main">
+    <div id="main">
 
-    <!-- Nav tabs -->
+        <!-- Nav tabs -->
 
-    <ul class="nav nav-tabs nav-justified" role="tablist" data-bind="click: $root.hideAlerts">
-        <li class="nav-item">
-            <a class="nav-link active " data-toggle="tab" href="#requests" role="tab">
-                <i class="fa fa-list" aria-hidden="true"></i> Requests</a>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link green" data-toggle="tab" href="#new" role="tab">
-                <i class="fa fa-plus" aria-hidden="true"></i> Open</a>
-        </li>
-    </ul>
-    <!-- /.Nav tabs -->
-
-
-    <!-- Tab panels -->
-
-    <div class="tab-content">
-
-        <!-- Feature Requests lists-->
-
-        <div class="tab-pane active" id="requests" role="tabpanel">
-            <div class="container-fluid">
-                <div class="row justify-content-center ">
-                    <div class="col-md-8">
-                        <div data-bind="foreach: requests">
-
-                            <!-- Feature requests row -->
-                            <div class="row justify-content-center request-row"
-                                 data-bind="click: $root.getRequestDetail">
-
-                                <div class="col-md-8">
-                                    <h2 data-bind="text: title"></h2>
-                                    <span class="text-muted product-area" data-bind="text:product_area">bill</span>
-                                    <p class="text-description" data-bind="text: client.name"></p>
-                                </div>
-
-                                <div class="col-md-2">
-                                    <small class="text-muted">Priority</small>
-                                    <span class="badge badge-pill" data-bind="text: priority"></span>
-                                </div>
-
-                                <div class="col-md-2">
-                                    <span class="text-muted product-area">Target date</span>
-                                    <h5 data-bind="text:target_date"></h5>
-                                </div>
-
-                            </div>
-                        </div>
+        <ul class="nav nav-tabs nav-justified" role="tablist" data-bind="click: $root.hideAlerts">
+            <li class="nav-item">
+                <a class="nav-link active " data-toggle="tab" href="#requests" role="tab">
+                    <i class="fa fa-list" aria-hidden="true"></i> Requests</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link green" data-toggle="tab" href="#new" role="tab">
+                    <i class="fa fa-plus" aria-hidden="true"></i> Open</a>
+            </li>
+        </ul>
+        <!-- /.Nav tabs -->
 
 
-                        <div data-bind="with: requestDetail">
-                            <div class="request-detail">
-                                <div class="row ">
-                                    <div class="col-md-3">
-                                        <h4 class="text-muted">Priority:</h4>
-                                        <p class="badge badge-pill badge-danger" data-bind="text: priority"></p>
+        <!-- Tab panels -->
+
+        <div class="tab-content">
+
+            <!-- Feature Requests lists-->
+
+            <div class="tab-pane active" id="requests" role="tabpanel">
+                <div class="container-fluid">
+                    <div class="row justify-content-center ">
+                        <div class="col-md-8">
+                            <div data-bind="foreach: requests">
+
+                                <!-- Feature requests row -->
+                                <div class="row justify-content-center request-row"
+                                     data-bind="click: $root.getRequestDetail">
+
+                                    <div class="col-md-8">
+                                        <h2 data-bind="text: title"></h2>
+                                        <span class="text-muted product-area" data-bind="text:product_area">bill</span>
+                                        <p class="text-description" data-bind="text: client.name"></p>
                                     </div>
-                                    <div class="col-md-3">
-                                        <h4 class="text-muted">Client:</h4>
-                                        <h4 data-bind="text:client.name"></h4>
+
+                                    <div class="col-md-2">
+                                        <small class="text-muted">Priority</small>
+                                        <span class="badge badge-pill" data-bind="text: priority"></span>
                                     </div>
-                                    <div class="col-md-3">
-                                        <h4 class="text-muted">Product area:</h4>
-                                        <h4 data-bind="text:product_area"></h4>
-                                    </div>
-                                    <div class="col-md-3">
-                                        <h4 class="text-muted">Target date:</h4>
+
+                                    <div class="col-md-2">
+                                        <span class="text-muted product-area">Target date</span>
                                         <h5 data-bind="text:target_date"></h5>
                                     </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-md-8">
-                                        <h1 data-bind="text: title"></h1>
-                                    </div>
-                                </div>
-                                <div class="row">
 
-                                    <div class="col-md-8">
-                                        <p class="text-description" data-bind="text:description"></p>
-                                    </div>
-
-                                </div>
-                                <div class="row ">
-                                    <div class="col-md-12">
-                                        <div class="btn-toolbar justify-content-between" role="toolbar"
-                                             aria-label="Toolbar with button groups">
-                                            <div class="btn-group" role="group" aria-label="First group">
-                                                <button class="btn btn-danger" data-bind="click: $root.deleteRequest">
-                                                    Delete
-                                                </button>
-
-                                            </div>
-                                            <div class="input-group">
-                                                <button class="btn btn-primary" data-toggle="modal"
-                                                        data-target="#myModal">Update
-                                                </button>
-                                                <button class="btn btn-success" data-bind="click:$root.getRequests">
-                                                    Back
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
                                 </div>
                             </div>
 
 
-                            <!-- Modal -->
-                            <div class="modal fade" id="myModal" tabindex="-2" role="dialog">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Title"
-                                                   data-bind="value: title">
+                            <div data-bind="with: requestDetail">
+                                <div class="request-detail">
+                                    <div class="row ">
+                                        <div class="col-md-3">
+                                            <h4 class="text-muted">Priority:</h4>
+                                            <p class="badge badge-pill badge-danger" data-bind="text: priority"></p>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <h4 class="text-muted">Client:</h4>
+                                            <h4 data-bind="text:client.name"></h4>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <h4 class="text-muted">Product area:</h4>
+                                            <h4 data-bind="text:product_area"></h4>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <h4 class="text-muted">Target date:</h4>
+                                            <h5 data-bind="text:target_date"></h5>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-8">
+                                            <h1 data-bind="text: title"></h1>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+
+                                        <div class="col-md-8">
+                                            <p class="text-description" data-bind="text:description"></p>
                                         </div>
 
-                                        <div class="form-group">
+                                    </div>
+                                    <div class="row ">
+                                        <div class="col-md-12">
+                                            <div class="btn-toolbar justify-content-between" role="toolbar"
+                                                 aria-label="Toolbar with button groups">
+                                                <div class="btn-group" role="group" aria-label="First group">
+                                                    <button class="btn btn-danger"
+                                                            data-bind="click: $root.deleteRequest">
+                                                        Delete
+                                                    </button>
+
+                                                </div>
+                                                <div class="input-group">
+                                                    <button class="btn btn-primary" data-toggle="modal"
+                                                            data-target="#myModal">Update
+                                                    </button>
+                                                    <button class="btn btn-success" data-bind="click:$root.getRequests">
+                                                        Back
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <!-- Modal -->
+                                <div class="modal fade" id="myModal" tabindex="-2" role="dialog">
+                                    <div class="modal-dialog" role="document">
+                                        <div class="modal-content">
+                                            <div class="form-group">
+                                                <input type="text" class="form-control" placeholder="Title"
+                                                       data-bind="value: title">
+                                            </div>
+
+                                            <div class="form-group">
                                             <textarea class="form-control" rows="8"
                                                       data-bind="value: description"></textarea>
-                                        </div>
-
-
-                                        <div class="form-group">
-
-                                            <select class="form-control" data-bind="value: client">
-                                                <option disabled selected hidden>Client</option>
-                                                <option>Client A</option>
-                                                <option>Client B</option>
-                                                <option>Client C</option>
-                                            </select>
-
-                                        </div>
-
-                                        <div class="form-group">
-
-                                            <select class="form-control" data-bind="value: product_area">
-                                                <option disabled selected hidden>Product area</option>
-                                                <option>Polices</option>
-                                                <option>Billing</option>
-                                                <option>Claims</option>
-                                                <option>Reports</option>
-                                            </select>
-
-                                        </div>
-
-                                        <div class="form-group">
-                                            <select class="form-control" data-bind="value: priority">
-                                                <option disabled selected hidden>Priority</option>
-                                                <option>1</option>
-                                                <option>2</option>
-                                                <option>3</option>
-                                                <option>4</option>
-                                                <option>5</option>
-                                            </select>
-
-                                        </div>
-
-                                        <div class="form-group row">
-
-                                            <label for="target-date" class="col-2 col-form-label">Target date</label>
-                                            <div class="col-10">
-                                                <input class="form-control" type="date" value="2011-08-19"
-                                                       id="target-date" data-bind="value: target_date">
                                             </div>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-primary"
-                                                    data-bind="click:$root.patchRequest, $root.getRequests">
-                                                update
-                                            </button>
+
+
+                                            <div class="form-group">
+
+                                                <select class="form-control" data-bind="value: client">
+                                                    <option disabled selected hidden>Client</option>
+                                                    <option>Client A</option>
+                                                    <option>Client B</option>
+                                                    <option>Client C</option>
+                                                </select>
+
+                                            </div>
+
+                                            <div class="form-group">
+
+                                                <select class="form-control" data-bind="value: product_area">
+                                                    <option disabled selected hidden>Product area</option>
+                                                    <option>Polices</option>
+                                                    <option>Billing</option>
+                                                    <option>Claims</option>
+                                                    <option>Reports</option>
+                                                </select>
+
+                                            </div>
+
+                                            <div class="form-group">
+                                                <select class="form-control" data-bind="value: priority">
+                                                    <option disabled selected hidden>Priority</option>
+                                                    <option>1</option>
+                                                    <option>2</option>
+                                                    <option>3</option>
+                                                    <option>4</option>
+                                                    <option>5</option>
+                                                </select>
+
+                                            </div>
+
+                                            <div class="form-group row">
+
+                                                <label for="target-date" class="col-2 col-form-label">Target
+                                                    date</label>
+                                                <div class="col-10">
+                                                    <input class="form-control" type="date" value="2011-08-19"
+                                                           id="target-date" data-bind="value: target_date">
+                                                </div>
+                                            </div>
+                                            <div class="modal-footer">
+                                                <button type="button" class="btn btn-primary"
+                                                        data-bind="click:$root.patchRequest, $root.getRequests">
+                                                    update
+                                                </button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
+
+                                <!--./modal -->
+
                             </div>
 
-                            <!--./modal -->
-
                         </div>
+
 
                     </div>
-
-
                 </div>
             </div>
-        </div>
-        <!-- /.Feature Requests lists -->
+            <!-- /.Feature Requests lists -->
 
-        <!-- New Feature Request Form -->
+            <!-- New Feature Request Form -->
 
-        <div class="tab-pane fade" id="new" role="tabpanel">
-            <div class="container">
-                <div class="row justify-content-center">
-                    <div class="col-md-10">
-                        <!-- Feature request submission form -->
+            <div class="tab-pane fade" id="new" role="tabpanel">
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-md-10">
+                            <!-- Feature request submission form -->
 
-                        <!--form error -->
-                        <div id="alert-form-success" class="alert alert-success" role="alert">
-                            <strong>Well done!</strong> You successfully read this important alert message.
-                        </div>
-                        <!--./form error -->
+                            <!--form error -->
+                            <div id="alert-form-success" class="alert alert-success" role="alert">
+                                <strong>Well done!</strong> You successfully read this important alert message.
+                            </div>
+                            <!--./form error -->
 
-                        <div id="alert-form-error" class="alert alert-danger" role="alert">
-                            <strong>Oh snap!</strong> Change a few things up and try submitting again.
-                        </div>
-
-                        <form>
-                            <div class="form-group ">
-                                <input type="text" class="form-control" placeholder="Title"
-                                       data-bind="value: title">
+                            <div id="alert-form-error" class="alert alert-danger" role="alert">
+                                <strong>Oh snap!</strong> Change a few things up and try submitting again.
                             </div>
 
-                            <div class="form-group">
+                            <form>
+                                <div class="form-group ">
+                                    <input type="text" class="form-control" placeholder="Title"
+                                           data-bind="value: title">
+                                </div>
+
+                                <div class="form-group">
                                 <textarea class="form-control" rows="8"
                                           placeholder="Description" data-bind="value: description"></textarea>
-                            </div>
-
-
-                            <div class="form-group">
-
-                                <select class="form-control" data-bind="value: client">
-                                    <option disabled selected hidden>Client</option>
-                                    <option>Client A</option>
-                                    <option>Client B</option>
-                                    <option>Client C</option>
-                                </select>
-
-                            </div>
-
-                            <div class="form-group">
-
-                                <select class="form-control" data-bind="value: product_area">
-                                    <option disabled selected hidden>Product area</option>
-                                    <option>Polices</option>
-                                    <option>Billing</option>
-                                    <option>Claims</option>
-                                    <option>Reports</option>
-                                </select>
-                            </div>
-
-                            <div class="form-group">
-                                <input class="form-control" placeholder="Priority" data-bind="value: priority"
-                                       list="priorities"/>
-                                <datalist id="priorities">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                    <option>6</option>
-                                    <option>7</option>
-                                    <option>8</option>
-                                    <option>9</option>
-                                </datalist>
-
-                            </div>
-
-                            <div class="form-group row">
-
-                                <label for="target-date" class="col-2 col-form-label">Target date</label>
-                                <div class="col-10">
-                                    <input class="form-control" type="date" value="2011-08-19"
-                                           data-bind="value: target_date" required>
                                 </div>
-                            </div>
 
 
-                            <button type="submit" class="btn btn-primary btn-lg btn-block"
-                                    data-bind="click: $root.validate">Open request
-                            </button>
-                        </form>
-                        <!-- ./Feature request submission form-->
+                                <div class="form-group">
+
+                                    <select class="form-control" data-bind="value: client">
+                                        <option disabled selected hidden>Client</option>
+                                        <option>Client A</option>
+                                        <option>Client B</option>
+                                        <option>Client C</option>
+                                    </select>
+
+                                </div>
+
+                                <div class="form-group">
+
+                                    <select class="form-control" data-bind="value: product_area">
+                                        <option disabled selected hidden>Product area</option>
+                                        <option>Polices</option>
+                                        <option>Billing</option>
+                                        <option>Claims</option>
+                                        <option>Reports</option>
+                                    </select>
+                                </div>
+
+                                <div class="form-group">
+                                    <input class="form-control" placeholder="Priority" data-bind="value: priority"
+                                           list="priorities"/>
+                                    <datalist id="priorities">
+                                        <option>1</option>
+                                        <option>2</option>
+                                        <option>3</option>
+                                        <option>4</option>
+                                        <option>5</option>
+                                        <option>6</option>
+                                        <option>7</option>
+                                        <option>8</option>
+                                        <option>9</option>
+                                    </datalist>
+
+                                </div>
+
+                                <div class="form-group row">
+
+                                    <label for="target-date" class="col-2 col-form-label">Target date</label>
+                                    <div class="col-10">
+                                        <input class="form-control" type="date" value="2011-08-19"
+                                               data-bind="value: target_date" required>
+                                    </div>
+                                </div>
+
+
+                                <button type="submit" class="btn btn-primary btn-lg btn-block"
+                                        data-bind="click: $root.validate">Open request
+                                </button>
+                            </form>
+                            <!-- ./Feature request submission form-->
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
-<!-- /.New Feature Request Form -->
+    <!-- /.New Feature Request Form -->
 
-</div>
+
 <!-- ./Tab panels -->
 
-</div>
 <!-- /.Main -->
 
 <!-- Footer -->
@@ -328,14 +344,13 @@
     </div>
 </footer>
 <!-- ./Footer -->
-
+</div>
 
 <!-- JavaScript dependencies -->
 
 <script src="https://code.jquery.com/jquery-3.2.1.min.js"
         integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">
 </script>
-
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
         integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
         crossorigin="anonymous">
@@ -346,8 +361,33 @@
 </script>
 
 <script>
+
     $("#alert-form-error").hide();
     $("#alert-form-success").hide();
+
+
+</script>
+
+<script>
+document.write('<style>#content { visibility: hidden; } </style>');
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+    delay();
+});
+
+function delay() {
+    var secs = 1000;
+    setTimeout('initFadeIn()', secs);
+}
+
+function initFadeIn() {
+    $("#loader").hide();
+    $("#content").css("visibility","visible");
+    $("#content").css("display","none");
+    $("#content").fadeIn(1500);
+}
 </script>
 <script src="{{ url_for('static', filename='js/vendor/knockout.js') }}" type="text/javascript"></script>
 <!-- ./JavaScript dependencies -->
