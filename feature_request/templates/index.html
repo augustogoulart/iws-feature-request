@@ -37,7 +37,7 @@
 
     <!-- Nav tabs -->
 
-    <ul class="nav nav-tabs nav-justified" role="tablist" data-bind="click: setFalse">
+    <ul class="nav nav-tabs nav-justified" role="tablist" >
         <li class="nav-item">
             <a class="nav-link active " data-toggle="tab" href="#requests" role="tab">
                 <i class="fa fa-list" aria-hidden="true"></i> Requests</a>
@@ -231,90 +231,82 @@
                         <!-- Feature request submission form -->
 
                         <!--form error -->
-                         <div data-bind="visible: formInvalid" class="alert alert-danger alert-dismissible fade show"
-                             role="alert">
-                            <button type="button" class="close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <strong>Field required!</strong> Some fields are empty
+                        <div id="alert-form-success" class="alert alert-success" role="alert">
+                            <strong>Well done!</strong> You successfully read this important alert message.
                         </div>
                         <!--./form error -->
 
-                        <div data-bind="visible: submitSuccess" class="alert alert-success alert-dismissible fade show"
-                             role="alert">
-                            <button type="button" class="close" data-bind="click: setFalse">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
-                            <strong>Success!</strong> Feature request added
+                        <div id="alert-form-error" class="alert alert-danger" role="alert">
+                            <strong>Oh snap!</strong> Change a few things up and try submitting again.
                         </div>
 
-                        <form>
-                            <div class="form-group ">
-                                <input type="text" class="form-control" placeholder="Title"
-                                       data-bind="value: title">
-                            </div>
+                    <form>
+                        <div class="form-group ">
+                            <input type="text" class="form-control" placeholder="Title"
+                                   data-bind="value: title">
+                        </div>
 
-                            <div class="form-group">
+                        <div class="form-group">
                                 <textarea class="form-control" rows="8"
-                                          placeholder="Description" data-bind="value: description" required></textarea>
+                                          placeholder="Description" data-bind="value: description"></textarea>
+                        </div>
+
+
+                        <div class="form-group">
+
+                            <select class="form-control" data-bind="value: client">
+                                <option disabled selected hidden>Client</option>
+                                <option>Client A</option>
+                                <option>Client B</option>
+                                <option>Client C</option>
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+
+                            <select class="form-control" data-bind="value: product_area" required>
+                                <option disabled selected hidden>Product area</option>
+                                <option>Polices</option>
+                                <option>Billing</option>
+                                <option>Claims</option>
+                                <option>Reports</option>
+                            </select>
+
+                        </div>
+
+                        <div class="form-group">
+                            <select class="form-control" data-bind="value: priority" required>
+                                <option disabled selected hidden>Priority</option>
+                                <option>1</option>
+                                <option>2</option>
+                                <option>3</option>
+                                <option>4</option>
+                                <option>5</option>
+                            </select>
+
+                        </div>
+
+                        <div class="form-group row">
+
+                            <label for="target-date" class="col-2 col-form-label">Target date</label>
+                            <div class="col-10">
+                                <input class="form-control" type="date" value="2011-08-19"
+                                       data-bind="value: target_date" required>
                             </div>
+                        </div>
 
 
-                            <div class="form-group">
-
-                                <select class="form-control" data-bind="value: client" required>
-                                    <option disabled selected hidden>Client</option>
-                                    <option>Client A</option>
-                                    <option>Client B</option>
-                                    <option>Client C</option>
-                                </select>
-
-                            </div>
-
-                            <div class="form-group">
-
-                                <select class="form-control" data-bind="value: product_area" required>
-                                    <option disabled selected hidden>Product area</option>
-                                    <option>Polices</option>
-                                    <option>Billing</option>
-                                    <option>Claims</option>
-                                    <option>Reports</option>
-                                </select>
-
-                            </div>
-
-                            <div class="form-group">
-                                <select class="form-control" data-bind="value: priority" required>
-                                    <option disabled selected hidden>Priority</option>
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </select>
-
-                            </div>
-
-                            <div class="form-group row">
-
-                                <label for="target-date" class="col-2 col-form-label">Target date</label>
-                                <div class="col-10">
-                                    <input class="form-control" type="date" value="2011-08-19"
-                                           data-bind="value: target_date" required>
-                                </div>
-                            </div>
-
-
-                            <button type="submit" class="btn btn-primary btn-lg btn-block"
-                                    data-bind="click: $root.validate">Open request
-                            </button>
-                        </form>
-                        <!-- ./Feature request submission form-->
-                    </div>
+                        <button type="submit" class="btn btn-primary btn-lg btn-block"
+                                data-bind="click: $root.validate">Open request
+                        </button>
+                    </form>
+                    <!-- ./Feature request submission form-->
                 </div>
             </div>
         </div>
     </div>
+</div>
 </div>
 <!-- /.New Feature Request Form -->
 
@@ -349,6 +341,11 @@
         crossorigin="anonymous">
 </script>
 
+<script>
+    $("#alert-form-error").hide();
+    $("#alert-form-success").hide();
+
+</script>
 <script src="{{ url_for('static', filename='js/vendor/knockout.js') }}" type="text/javascript"></script>
 <!-- ./JavaScript dependencies -->
 

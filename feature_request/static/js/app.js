@@ -12,12 +12,6 @@ function FeatureRequestViewModel() {
     self.requests = ko.observable();
     self.requestDetail = ko.observable();
 
-    self.submitSuccess = ko.observable();
-    self.formInvalid = ko.observable();
-
-    self.setFalse = function () {
-        self.submitSuccess(false);
-    };
 
     self.getRequests = function () {
         self.requestDetail(null);
@@ -41,7 +35,6 @@ function FeatureRequestViewModel() {
 
     };
     self.patchRequest = function (request) {
-        console.log('VAL:' + request.title);
         $.ajax({
             url: '/api/requests/' + request.id,
             type: 'PATCH',
@@ -86,8 +79,6 @@ function FeatureRequestViewModel() {
                 product_area: self.product_area()
             }),
             success: function () {
-                self.submitSuccess(true);
-                self.formInvalid(false);
                 self.getRequests();
                 self.title(null);
                 self.client('Client');
@@ -106,15 +97,17 @@ function FeatureRequestViewModel() {
     self.validate = function () {
         if (!self.title() || self.client() === "Client" || !self.description()
             || !self.target_date() || self.priority() === "Priority" || self.priority() === 'Product area') {
-            self.formInvalid(true);
+            $("#alert-form-error").show();
         } else {
+            $("#alert-form-error").hide();
+            $("#alert-form-success").show();
+
             self.postRequest();
         }
     };
 
     self.startUp = function () {
-        self.submitSuccess(false);
-        self.formInvalid(false);
+
         self.getRequests();
     };
 
