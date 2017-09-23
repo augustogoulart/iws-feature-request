@@ -2,6 +2,7 @@
 
 [![Build Status](https://travis-ci.org/augustogoulart/iws-feature-request.svg?branch=master)](https://travis-ci.org/augustogoulart/iws-feature-request)
 
+[![Coverage Status](https://coveralls.io/repos/github/augustogoulart/iws-feature-request/badge.svg)](https://coveralls.io/github/augustogoulart/iws-feature-request)
 ### This is not the first release yet!
 Up to this moment, the app is running on an AWS EC2 instance at:
 
