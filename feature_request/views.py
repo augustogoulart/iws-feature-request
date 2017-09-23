@@ -1,8 +1,8 @@
 from flask import Blueprint, request
 from flask_restful import Api, Resource
+
 from .models import db, FeatureRequest, Client
 from .schemas import FeatureRequestSchema, ClientSchema
-from sqlalchemy.exc import SQLAlchemyError
 
 api_bp = Blueprint('api', __name__)
 
@@ -19,14 +19,8 @@ class FeatureRequestResource(Resource):
 
     def delete(self, id):
         feature_request = FeatureRequest.query.get_or_404(id)
-        try:
-            feature_request.delete(feature_request)
-            return '', 204
-
-        except SQLAlchemyError as e:
-            db.session.rollback()
-            resp = str(e)
-            return resp, 401
+        feature_request.delete(feature_request)
+        return 'NO CONTENT', 204
 
     def patch(self, id):
         feature_request = FeatureRequest.query.get_or_404(id)
@@ -42,27 +36,21 @@ class FeatureRequestResource(Resource):
         if errors:
             return errors, 400
 
-        try:
+        client_name = feature_request_dict['client']['name']
+        client = Client.query.filter_by(name=client_name).first()
+        if client is None:
+            client = Client(name=client_name)
+            db.session.add(client)
+            feature_request.client = client
 
-            client_name = feature_request_dict['client']['name']
-            client = Client.query.filter_by(name=client_name).first()
-            if client is None:
-                client = Client(name=client_name)
-                db.session.add(client)
-                feature_request.client = client
+        feature_request.title = feature_request_dict.get('title')
+        feature_request.description = feature_request_dict.get('description')
+        feature_request.priority = feature_request_dict.get('priority')
+        feature_request.product_area = feature_request_dict.get('product_area')
+        feature_request.target_date = feature_request_dict.get('target_date')
+        feature_request.update()
 
-            feature_request.title = feature_request_dict.get('title')
-            feature_request.description = feature_request_dict.get('description')
-            feature_request.priority = feature_request_dict.get('priority')
-            feature_request.product_area = feature_request_dict.get('product_area')
-            feature_request.target_date = feature_request_dict.get('target_date')
-            feature_request.update()
-
-            return self.get(id)
-
-        except SQLAlchemyError as error:
-            db.session.rollback()
-            return str(error), 400
+        return self.get(id)
 
 
 class FeatureRequestResourceList(Resource):
@@ -73,53 +61,44 @@ class FeatureRequestResourceList(Resource):
     def post(self):
         request_dict = request.get_json()
 
-        if not request_dict:
-            return {'message': 'No input data provided'}, 400
-
         errors = feature_request_schema.validate(request_dict)
 
         if errors:
             return errors, 400
 
-        try:
-            client_name = request_dict['client']['name']
-            client = Client.query.filter_by(name=client_name).first()
+        client_name = request_dict['client']['name']
+        client = Client.query.filter_by(name=client_name).first()
 
-            if client is None:
-                client = Client(name=client_name)
-                db.session.add(client)
+        if client is None:
+            client = Client(name=client_name)
+            db.session.add(client)
 
-            feature_request = FeatureRequest(
-                title=request_dict['title'],
-                description=request_dict['description'],
-                target_date=request_dict['target_date'],
-                priority=request_dict['priority'],
-                product_area=request_dict['product_area'],
-                client=client
-            )
+        feature_request = FeatureRequest(
+            title=request_dict['title'],
+            description=request_dict['description'],
+            target_date=request_dict['target_date'],
+            priority=request_dict['priority'],
+            product_area=request_dict['product_area'],
+            client=client
+        )
 
-            # Check priority before persist
+        # Check priority before persist
 
-            requests_by_client = FeatureRequest.query.filter_by(client_id=client.id)
-            data = feature_request_schema.dump(requests_by_client, many=True).data
+        requests_by_client = FeatureRequest.query.filter_by(client_id=client.id)
+        data = feature_request_schema.dump(requests_by_client, many=True).data
 
-            for f_request in data:
-                if f_request.get('priority') >= int(feature_request.priority):
-                    f_query = FeatureRequest.query.get_or_404(f_request.get('id'))
-                    f_query.priority += 1
-                    f_query.update()
+        for previous_request in data:
+            if previous_request.get('priority') >= int(feature_request.priority):
+                update_query = FeatureRequest.query.get_or_404(previous_request.get('id'))
+                update_query.priority += 1
+                update_query.update()
 
-            feature_request.add(feature_request)
+        feature_request.add(feature_request)
 
-            query = FeatureRequest.query.get(feature_request.id)
+        query = FeatureRequest.query.get(feature_request.id)
 
-            return feature_request_schema.dump(query).data, 201
-
-        except SQLAlchemyError as error:
-            db.session.rollback()
-            return str(error), 400
+        return feature_request_schema.dump(query).data, 201
 
 
 api.add_resource(FeatureRequestResourceList, '/requests/')
 api.add_resource(FeatureRequestResource, '/requests/<int:id>')
-

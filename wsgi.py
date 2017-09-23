@@ -1,12 +1,6 @@
 from feature_request.app import create_app
-from flask import render_template
 
 app = create_app('feature_request.config')
-
-
-@app.route('/')
-def home():
-    return render_template('index.html')
 
 
 if __name__ == "__main__":

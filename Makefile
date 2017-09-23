@@ -5,7 +5,8 @@ setup-test:
 	    pip install --upgrade -r requirements/test.txt
 
 test:
-	    nose2 -v --with-coverage
+	    nose2 --with-cov
+		coverage report -i -m
 
 run:
 	    python wsgi.py
