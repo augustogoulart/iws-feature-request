@@ -101,7 +101,7 @@ function FeatureRequestViewModel() {
 
     self.validate = function () {
         if (!self.title() || self.client() === "Client" || !self.description()
-            || !self.target_date() || self.priority() === "Priority" || self.priority() === 'Product area') {
+            || !self.target_date() || self.priority() === "Priority"|| self.priority() === 'Product area') {
             $("#alert-form-error").show();
         } else {
             $("#alert-form-error").hide();

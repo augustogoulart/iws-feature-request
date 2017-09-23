@@ -28,9 +28,20 @@
     </script>
 
     <script type="text/javascript">
-        $(document).ready(function(){delay();});function delay(){var secs = 1000;setTimeout('initFadeIn()',secs);}
-            function initFadeIn(){$("#content").css("visibility","visible");$("#content").css("display","none");
-            $("#content").fadeIn(1500);}
+        $(document).ready(function () {
+            delay();
+        });
+
+        function delay() {
+            var secs = 1000;
+            setTimeout('initFadeIn()', secs);
+        }
+
+        function initFadeIn() {
+            $("#content").css("visibility", "visible");
+            $("#content").css("display", "none");
+            $("#content").fadeIn(1000);
+        }
     </script>
 
 </head>
@@ -76,7 +87,7 @@
                         <div class="col-md-8">
                             <div data-bind="foreach: requests">
 
-                                <!-- Feature requests row -->
+                                <!-- feature requests row -->
                                 <div class="row justify-content-center request-row"
                                      data-bind="click: $root.getRequestDetail">
 
@@ -95,8 +106,8 @@
                                         <span class="text-muted product-area">Target date</span>
                                         <h5 data-bind="text:target_date"></h5>
                                     </div>
-
                                 </div>
+                                <!-- ./feature requests row -->
                             </div>
 
 
@@ -196,7 +207,7 @@
                                             </div>
 
                                             <div class="form-group">
-                                                <select class="form-control" data-bind="value: priority">
+                                                <select class="form-control" type="number" data-bind="value: priority">
                                                     <option disabled selected hidden>Priority</option>
                                                     <option>1</option>
                                                     <option>2</option>
@@ -236,7 +247,7 @@
                     </div>
                 </div>
             </div>
-            <!-- /.Feature Requests lists -->
+            <!-- /.feature Requests lists -->
 
             <!-- New Feature Request Form -->
 
