@@ -13,5 +13,8 @@ install:
   - cp contrib/env-sample.txt .env
   - pip install --upgrade -r requirements/requirements.txt
   - pip install --upgrade -r requirements/test.txt
+  - pip install coveralls --quiet
 
 script: make test
+
+after_success: coveralls
