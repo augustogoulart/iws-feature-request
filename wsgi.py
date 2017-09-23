@@ -1,7 +1,7 @@
-from app import create_app
+from feature_request.app import create_app
 from flask import render_template
 
-app = create_app('config')
+app = create_app('feature_request.config')
 
 
 @app.route('/')

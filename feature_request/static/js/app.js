@@ -13,7 +13,6 @@ function FeatureRequestViewModel() {
     self.requestDetail = ko.observable();
 
 
-
     self.getRequests = function () {
         self.requestDetail(null);
         $.get('/api/requests/', self.requests);
@@ -98,15 +97,15 @@ function FeatureRequestViewModel() {
     self.validate = function () {
         if (!self.title() || self.client() === "Client" || !self.description()
             || !self.target_date() || self.priority() === "Priority" || self.priority() === 'Product area') {
-            $("#alert-form-error").show();}
-
-        if (!(/^\+?(0|[1-9]\d*)$/.test(self.priority()))){
-            $("#alert-form-success").hide();
-
-             $("#alert-priority-not-integer").show();
+            $("#alert-form-error").show();
         }
-         else {
-             $("#alert-priority-not-integer").hide();
+
+        if (!(/^\+?(0|[1-9]\d*)$/.test(self.priority()))) {
+            $("#alert-form-success").hide();
+            $("#alert-priority-not-integer").show();
+        }
+        else {
+            $("#alert-priority-not-integer").hide();
             $("#alert-form-error").hide();
             $("#alert-form-success").show();
             self.postRequest();
@@ -116,15 +115,11 @@ function FeatureRequestViewModel() {
     self.hideAlerts = function () {
         $("#alert-form-error").hide();
         $("#alert-form-success").hide();
-         $("#alert-priority-not-integer").hide();
+        $("#alert-priority-not-integer").hide();
     };
 
-    self.startUp = function () {
 
-        self.getRequests();
-    };
-
-    self.startUp();
+    self.getRequests();
 }
 
 ko.applyBindings(new FeatureRequestViewModel());

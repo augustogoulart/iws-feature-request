@@ -1,7 +1,7 @@
 from flask import Blueprint, request
 from flask_restful import Api, Resource
-from models import db, FeatureRequest, Client
-from schemas import FeatureRequestSchema, ClientSchema
+from .models import db, FeatureRequest, Client
+from .schemas import FeatureRequestSchema, ClientSchema
 from sqlalchemy.exc import SQLAlchemyError
 
 api_bp = Blueprint('api', __name__)
