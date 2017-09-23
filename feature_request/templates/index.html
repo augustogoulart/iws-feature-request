@@ -267,6 +267,10 @@
                                 <strong>Oh snap!</strong> Change a few things up and try submitting again.
                             </div>
 
+                              <div id="alert-priority-not-integer" class="alert alert-warning" role="alert">
+                                <strong>Psss!</strong> Priority must be a number
+                            </div>
+
                             <form>
                                 <div class="form-group ">
                                     <input type="text" class="form-control" placeholder="Title"
@@ -305,6 +309,7 @@
                                     <input class="form-control" placeholder="Priority" data-bind="value: priority"
                                            list="priorities"/>
                                     <datalist id="priorities">
+                                        <option value="" disabled selected>Select your option</option>
                                         <option>1</option>
                                         <option>2</option>
                                         <option>3</option>
@@ -369,16 +374,13 @@
 </script>
 
 <script>
-
     $("#alert-form-error").hide();
     $("#alert-form-success").hide();
-
-
+    $("#alert-priority-not-integer").hide();
 </script>
 
 <script src="{{ url_for('static', filename='js/vendor/knockout.js') }}" type="text/javascript"></script>
 <!-- ./JavaScript dependencies -->
-
 
 <!-- IWS Feature Request -->
 
