@@ -2,7 +2,8 @@
 
 [![Build Status](https://travis-ci.org/augustogoulart/iws-feature-request.svg?branch=master)](https://travis-ci.org/augustogoulart/iws-feature-request)
 [![Coverage Status](https://coveralls.io/repos/github/augustogoulart/iws-feature-request/badge.svg)](https://coveralls.io/github/augustogoulart/iws-feature-request)
-####The app is live at:
+
+#### The app is live at:
 
 http://ec2-54-218-77-21.us-west-2.compute.amazonaws.com/
 
@@ -34,7 +35,7 @@ intended to support any heavier load, neither Nginx of Apache were used.
 
 
 
-## Visualizing the API
+# Visualizing the API
 
 For better visualization, I'd recommend this Chrome extension: [JSON Viewer](https://chrome.google.com/webstore/detail/json-viewer/gbmdgpbipfallnflgajpaliibnhdgobh?utm_source=chrome-app-launcher-info-dialog
 )
@@ -61,7 +62,7 @@ _Obs: If a client does not exits, it will be automatically created._
 
 **_PATCH_** /api/requests/75 title='title' description='description' client='client' priority=1 target_date='2017-10-10' product_area='Billing'
 
-## Running locally 
+# Running locally 
 #### Creating the Database
 
 **1. Install PostgreSQL:**
