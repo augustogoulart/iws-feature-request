@@ -28,7 +28,7 @@ class FeatureRequestResource(Resource):
         data = feature_request_schema.dump(requests_by_client, many=True).data
 
         for previous_request in data:
-            if previous_request.get('priority') >= int(feature_request.priority):
+            if previous_request.get('priority') > int(feature_request.priority):
                 update_query = FeatureRequest.query.get_or_404(previous_request.get('id'))
                 update_query.priority -= 1
                 update_query.update()
