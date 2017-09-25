@@ -4,5 +4,4 @@ omit =
     */virtualenv/*
     */tests/*
     feature_request/config.py
-    feature_request/migrate.py
-    wsgi.py
+    feature_request/wsgi.py
