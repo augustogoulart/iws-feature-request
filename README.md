@@ -7,11 +7,13 @@
 
 http://ec2-54-218-77-21.us-west-2.compute.amazonaws.com/
 
-## Purpose
+## Methodology
 
-1. The app was developed very similarly as how I would develop an application for a client.
-2. Since day-1 the app was live as a simple static page, so the client could check the progress.
-3. If this were a real app I wouldn't say It's "done". This version would be the stage where the client validate its first 
+**1.** The app was developed similarly as how I would develop an application for a client.
+
+**2.** Since day-1 the app was live as a simple static page, so the client could check the progress.
+
+**3.** If this were a real app I wouldn't say It's "done". This version would represent the stage where the client validate its first 
 idea and send some feedback for me to make changes
 
 ## Stack
