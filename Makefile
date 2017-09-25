@@ -13,10 +13,10 @@ run:
 	    @cd feature_request && export FLASK_DEBUG=1 && export FLASK_APP=wsgi.py && flask run
 
 migrate:
-		@cd feature_request && flask db migrate
+		@cd feature_request && export FLASK_APP=wsgi.py && flask db migrate
 
 upgrade:
-	    @cd feature_request && flask db upgrade
+	    @cd feature_request && export FLASK_APP=wsgi.py && flask db upgrade
 
 gunicorn:
 	    gunicorn --bind 0.0.0.0:80 --workers=3 feature_request.wsgi:app
