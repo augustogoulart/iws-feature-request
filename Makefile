@@ -6,11 +6,11 @@ setup-test:
 	    @pip install --upgrade -r requirements/test.txt
 
 test:
-	    @nose2
+	    @nose2 --with-cov
 		@coverage report -i -m
 
 run:
-	    @cd feature_request && export FLASK_DEBUG=1 && flask run
+	    @cd feature_request && export FLASK_DEBUG=1 && export FLASK_APP=wsgi.py && flask run
 
 migrate:
 		@cd feature_request && flask db migrate

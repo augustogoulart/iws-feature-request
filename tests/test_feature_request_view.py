@@ -123,7 +123,7 @@ class TestFeatureRequestResource(TestCase):
 
         self.assertEqual(400, response.status_code)
 
-    def test_feature_request_priority_updating(self):
+    def test_feature_request_priority_updating_on_new_request(self):
         url = url_for('api.featurerequestresourcelist', _external=True)
 
         previous = {'title': 'title', 'description': 'description', 'client': 'client', 'priority': 1,
@@ -145,4 +145,44 @@ class TestFeatureRequestResource(TestCase):
             data=json.dumps(updated))
 
         updated_resp = self.app_client.get("/api/requests/")
+        self.assertNotEqual(previous_resp, updated_resp)
+
+    def test_feature_request_priority_updating_on_delete(self):
+        url = url_for('api.featurerequestresourcelist', _external=True)
+
+        new_request = {'title': 'title', 'description': 'description', 'client': 'client', 'priority': 1,
+                       'target_date': '2017-10-10', 'product_area': 'product_area'}
+
+        self.app_client.post(
+            url,
+            headers={'Accept': 'application/json', 'Content-Type': 'application/json'},
+            data=json.dumps(new_request))
+
+        previous_resp = self.app_client.get("/api/requests/2")
+        self.app_client.delete(f"/api/requests/{self.feature_request.id}")
+
+        updated_resp = self.app_client.get("/api/requests/2")
+        self.assertNotEqual(previous_resp, updated_resp)
+
+    def test_feature_request_priority_updating_on_update(self):
+        url = url_for('api.featurerequestresourcelist', _external=True)
+
+        new_request = {'title': 'title', 'description': 'description', 'client': 'Client A', 'priority': 2,
+                       'target_date': '2017-10-10', 'product_area': 'product_area'}
+
+        self.app_client.post(
+            url,
+            headers={'Accept': 'application/json', 'Content-Type': 'application/json'},
+            data=json.dumps(new_request))
+
+        previous_resp = self.app_client.get("/api/requests/2")
+
+        delete_url = url_for('api.featurerequestresource', _external=True, id=1)
+
+        self.app_client.delete(
+            delete_url,
+            headers={'Accept': 'application/json', 'Content-Type': 'application/json'})
+
+        updated_resp = self.app_client.get("/api/requests/2")
+
         self.assertNotEqual(previous_resp, updated_resp)

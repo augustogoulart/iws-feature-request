@@ -19,12 +19,26 @@ class FeatureRequestResource(Resource):
 
     def delete(self, id):
         feature_request = FeatureRequest.query.get_or_404(id)
+        client = Client.query.filter_by(name=feature_request.client.name).first()
+
+        """
+        Decrease the priority value of the feature requests by client when a feature request is removed
+        """
+        requests_by_client = FeatureRequest.query.filter_by(client_id=client.id)
+        data = feature_request_schema.dump(requests_by_client, many=True).data
+
+        for previous_request in data:
+            if previous_request.get('priority') >= int(feature_request.priority):
+                update_query = FeatureRequest.query.get_or_404(previous_request.get('id'))
+                update_query.priority -= 1
+                update_query.update()
+
         feature_request.delete(feature_request)
+
         return 'NO CONTENT', 204
 
     def patch(self, id):
         feature_request = FeatureRequest.query.get_or_404(id)
-
         feature_request_dict = request.get_json()
 
         if not feature_request_dict:
@@ -36,13 +50,20 @@ class FeatureRequestResource(Resource):
         if errors:
             return errors, 400
 
+        # Checks if the client name to be updated exists, if not, create it.
         client_name = feature_request_dict['client']['name']
         client = Client.query.filter_by(name=client_name).first()
+
         if client is None:
             client = Client(name=client_name)
             db.session.add(client)
             feature_request.client = client
 
+        """
+        Validates if the instance to the persisted has a new priority based on its client. 
+        If not, performs an update on every feature requests with lower priority owned by the specified client 
+        and persists the new feature requests keeping its priority value.
+        """
         requests_by_client = FeatureRequest.query.filter_by(client_id=client.id)
         data = feature_request_schema.dump(requests_by_client, many=True).data
 
@@ -76,6 +97,8 @@ class FeatureRequestResourceList(Resource):
 
         if errors:
             return errors, 400
+
+        # Checks if the client name exists, if not, create it.
 
         client_name = request_dict['client']['name']
         client = Client.query.filter_by(name=client_name).first()
