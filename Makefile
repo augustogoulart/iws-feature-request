@@ -6,7 +6,7 @@ setup-test:
 	    @pip install --upgrade -r requirements/test.txt
 
 test:
-	    @nose2 
+	    @nose2
 		@coverage report -i -m
 
 run:

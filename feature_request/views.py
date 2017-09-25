@@ -43,11 +43,22 @@ class FeatureRequestResource(Resource):
             db.session.add(client)
             feature_request.client = client
 
+        requests_by_client = FeatureRequest.query.filter_by(client_id=client.id)
+        data = feature_request_schema.dump(requests_by_client, many=True).data
+
+        for previous_request in data:
+            if previous_request.get('priority') >= int(feature_request_dict.get('priority')):
+                update_query = FeatureRequest.query.get_or_404(previous_request.get('id'))
+                update_query.priority += 1
+                update_query.update()
+
         feature_request.title = feature_request_dict.get('title')
         feature_request.description = feature_request_dict.get('description')
         feature_request.priority = feature_request_dict.get('priority')
         feature_request.product_area = feature_request_dict.get('product_area')
         feature_request.target_date = feature_request_dict.get('target_date')
+        feature_request.client = client
+
         feature_request.update()
 
         return self.get(id)
