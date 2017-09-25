@@ -19,5 +19,5 @@ upgrade:
 	    @cd feature_request && flask db upgrade
 
 gunicorn:
-	    gunicorn --bind 0.0.0.0:80 --workers=4 feature_request.wsgi:app
+	    gunicorn --bind 0.0.0.0:80 --workers=3 feature_request.wsgi:app
 
