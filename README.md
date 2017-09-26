@@ -17,7 +17,7 @@ http://ec2-54-218-77-21.us-west-2.compute.amazonaws.com/
 idea and send some feedback for me to make changes
 
 ## Stack
-1. **Python 3.6.2** -  New features and improvements of the version were used, so backwards incompatibility
+1. **Python 3.6.2** -  New features and improvements of the version were used, so backwards compatibility
 is not guaranted.
 2. **Flask** - Python micro framework requested.
 3. **Flask-RESTful** - Flask extension to help building concise REST API's
